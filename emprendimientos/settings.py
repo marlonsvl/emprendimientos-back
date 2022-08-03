@@ -11,9 +11,12 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+from django.test.runner import DiscoverRunner
 
 from django.contrib.messages import constants as messages
 import os
+
+
 
 MESSAGE_TAGS = {
     messages.DEBUG: 'alert-secondary',
@@ -27,6 +30,8 @@ MESSAGE_TAGS = {
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+### agreado recien
+IS_HEROKU = "DYNO" in os.environ
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -37,7 +42,7 @@ SECRET_KEY = 'django-insecure-s7gr@$2!wk@80n3*)$rwlv797=$uv9d#=r&3%ip6ep!iixip8s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.3', 'localhost', '127.0.0.1']
+#ALLOWED_HOSTS = ['192.168.1.3', 'localhost', '127.0.0.1']
 
 
 STATICFILES_DIRS = [
@@ -171,5 +176,35 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+
+
+# agreagdo recien
+
+# Generally avoid wildcards(*). However since Heroku router provides hostname validation it is ok
+if IS_HEROKU:
+    ALLOWED_HOSTS = ["*"]
+else:
+    ALLOWED_HOSTS = ['192.168.1.3', 'localhost', '127.0.0.1']
+
+if not IS_HEROKU:
+    DEBUG = True
+
+
+# Test Runner Config
+class HerokuDiscoverRunner(DiscoverRunner):
+    """Test Runner for Heroku CI, which provides a database for you.
+    This requires you to set the TEST database (done for you by settings().)"""
+
+    def setup_databases(self, **kwargs):
+        self.keepdb = True
+        return super(HerokuDiscoverRunner, self).setup_databases(**kwargs)
+
+
+# Use HerokuDiscoverRunner on Heroku CI
+if "CI" in os.environ:
+    TEST_RUNNER = "gettingstarted.settings.HerokuDiscoverRunner"
 
 
