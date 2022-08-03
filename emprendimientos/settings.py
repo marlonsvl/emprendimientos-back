@@ -37,7 +37,7 @@ IS_HEROKU = "DYNO" in os.environ
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-s7gr@$2!wk@80n3*)$rwlv797=$uv9d#=r&3%ip6ep!iixip8s'
+#SECRET_KEY = 'django-insecure-s7gr@$2!wk@80n3*)$rwlv797=$uv9d#=r&3%ip6ep!iixip8s'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
