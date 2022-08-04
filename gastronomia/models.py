@@ -10,7 +10,7 @@ class Establecimiento(models.Model):
         ("Si", "Si"),
         ("No", "No")
     ]
-    nombre = models.CharField(max_length=200)
+    nombre = models.CharField(max_length=400)
     fecha = models.DateTimeField('fecha')
     ruc = models.CharField(max_length=2, choices=ACTIVE_CHOICES)
     parroquia = models.CharField(max_length=100)
@@ -22,28 +22,28 @@ class Establecimiento(models.Model):
     redes_sociales = models.CharField(max_length=100)
     asociacion = models.CharField(max_length=200)
     local = models.CharField(max_length=200)
-    equipos = models.CharField(max_length=500)
-    equipos_cocina = models.CharField(max_length=500)
-    servicios_complementarios = models.CharField(max_length=500)
+    equipos = models.CharField(max_length=1000)
+    equipos_cocina = models.CharField(max_length=1000)
+    servicios_complementarios = models.CharField(max_length=1000)
     numero_mesas = models.IntegerField()
     plazas = models.IntegerField()
-    banio = models.CharField(max_length=2, choices=ACTIVE_CHOICES)
-    oferta = models.CharField(max_length=200)
-    tipo_servicio = models.CharField(max_length=200)
+    banio = models.CharField(max_length=20, choices=ACTIVE_CHOICES)
+    oferta = models.CharField(max_length=400)
+    tipo_servicio = models.CharField(max_length=400)
     menu = models.TextField(max_length=1200, null=True)
     precio_promedio = models.DecimalField(
         decimal_places=2, max_digits=10)
-    proceso = models.CharField(max_length=200) # 25
-    materias_primas = models.CharField(max_length=200) # 26
-    tipo_materia_prima = models.CharField(max_length=200) # 27
+    proceso = models.CharField(max_length=400) # 25
+    materias_primas = models.CharField(max_length=400) # 26
+    tipo_materia_prima = models.CharField(max_length=400) # 27
     numero_mujeres = models.IntegerField() # 28
     numero_hombres = models.IntegerField() # 29
     formacion_academica = models.CharField(max_length=200) # 30
     personal_capacitado = models.CharField(max_length=2, choices=ACTIVE_CHOICES) #31
     frecuencia_capacitacion = models.CharField(max_length=200) # 32
     empleados_formacion = models.CharField(max_length=200) # 33
-    licencia_anual = models.CharField(max_length=2, choices=ACTIVE_CHOICES) #35
-    url = models.URLField(null=True, blank=True, max_length=250)
+    licencia_anual = models.CharField(max_length=20, choices=ACTIVE_CHOICES) #35
+    url = models.URLField(null=True, blank=True, max_length=500)
     latitude = models.DecimalField(max_digits=9, decimal_places=6) # y
     longitude = models.DecimalField(max_digits=9, decimal_places=6) # x
 

@@ -3,6 +3,9 @@ from gastronomia.models import Establecimiento
 from django.utils import timezone
 import pandas as pd
 
+
+
+
 class Command(BaseCommand):
     help = 'Load data from Excel file'
 
