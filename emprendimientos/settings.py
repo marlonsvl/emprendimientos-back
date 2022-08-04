@@ -185,7 +185,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Generally avoid wildcards(*). However since Heroku router provides hostname validation it is ok
 if IS_HEROKU:
-    ALLOWED_HOSTS = ["*"]
+    ALLOWED_HOSTS = ["*", "https://peaceful-garden-43285.herokuapp.com/"]
 else:
     ALLOWED_HOSTS = ['192.168.1.3', 'localhost', '127.0.0.1']
 
