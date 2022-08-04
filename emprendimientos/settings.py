@@ -201,7 +201,7 @@ else:
 if not IS_HEROKU:
     DEBUG = True
 
-DEBUG = True
+#DEBUG = True
 
 # Test Runner Config
 class HerokuDiscoverRunner(DiscoverRunner):
