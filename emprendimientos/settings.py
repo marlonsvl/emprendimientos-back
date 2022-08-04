@@ -40,7 +40,7 @@ IS_HEROKU = "DYNO" in os.environ
 SECRET_KEY = 'z=$5rf4rm+$lawj#(#2mpw36vh8#)9!hwl!^_(m%6d#z=1@wj%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = True
+DEBUG = True
 
 #ALLOWED_HOSTS = ['192.168.1.3', 'localhost', '127.0.0.1']
 
@@ -185,13 +185,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Generally avoid wildcards(*). However since Heroku router provides hostname validation it is ok
 if IS_HEROKU:
-    ALLOWED_HOSTS = ["*", "https://peaceful-garden-43285.herokuapp.com/"]
+    ALLOWED_HOSTS = ["*", "herokuapp.com/"]
 else:
     ALLOWED_HOSTS = ['192.168.1.3', 'localhost', '127.0.0.1']
 
 if not IS_HEROKU:
     DEBUG = True
 
+DEBUG = True
 
 # Test Runner Config
 class HerokuDiscoverRunner(DiscoverRunner):
